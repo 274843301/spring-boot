@@ -1,1 +1,23 @@
 #mvn clean package docker:build -Dmaven.test.skip=true
+#window下环境变量添加
+docker_host=tcp://192.168.1.901:2375
+
+方法2。如当前hub存在用户名密码则可在maven setting中定义
+<servers>
+  <server>
+    <id>docker-hub</id>
+    <username>你的DockerHub用户名</username>
+    <password>你的DockerHub密码</password>
+    <configuration>
+      <email>你的DockerHub邮箱</email>
+    </configuration>
+  </server>
+</servers>
+
+pom.xml 
+docker的maven插件<plugin>引用中 添加 
+<!-- 以下两行是为了docker push到DockerHub使用的。 serverId名称对应上面-->
+    <serverId>docker-hub</serverId>
+    <registryUrl>https://index.docker.io/v1/</registryUrl>
+</configuration>
+
