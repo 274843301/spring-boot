@@ -23,3 +23,8 @@ docker的maven插件<plugin>引用中 添加
     <registryUrl>https://index.docker.io/v1/</registryUrl>
 </configuration>
 
+#镜像启动
+docker run -d --network=host spring-boot-docker
+或者
+docker run -d -p 18080:8080 spring-boot-docker
+
