@@ -1,5 +1,9 @@
 #vi /usr/lib/systemd/system/docker.service
 #添加ExecStart改 ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375
+#重启 
+#systemctl daemon-reload 
+#service docker restart
+
 方法一：
 #window下环境变量添加
 docker_host=tcp://192.168.1.90:2375
