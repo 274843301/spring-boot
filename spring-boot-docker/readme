@@ -1,7 +1,10 @@
+#vi /usr/lib/systemd/system/docker.service
+#添加ExecStart改 ExecStart=/usr/bin/dockerd -H fd:// -H tcp://0.0.0.0:2375
 方法一：
 #window下环境变量添加
-docker_host=tcp://192.168.1.901:2375
-cmd 执行
+docker_host=tcp://192.168.1.90:2375
+http验证http://192.168.1.90:2375/info
+打包
 #mvn clean package docker:build -Dmaven.test.skip=true
 
 方法2。如当前hub存在用户名密码则可在maven setting中定义
