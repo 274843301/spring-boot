@@ -47,8 +47,14 @@
 				<artifactId>docker-maven-plugin</artifactId>
 				<version>1.0.0</version>
 				<configuration>
-					<imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-					<dockerDirectory>src/main/docker</dockerDirectory>
+					<!-- 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 -->
+					<imageName>${project.artifactId}</imageName>
+					<!-- 指定Dockerfile 
+					<dockerDirectory>src/main/docker</dockerDirectory>-->
+					<!-- 不需要Dockerfile时-->
+					<forceTags>true</forceTags>
+    				<baseImage>tclcloud/java8:211</baseImage>
+    				<entryPoint>["java","-jar","/${project.build.finalName}.jar"]</entryPoint>
 					<resources>
 						<resource>
 							<targetPath>/</targetPath>
